@@ -1,5 +1,26 @@
 # Changelog
 
+## v2.1.0 — Anthropic Skills format compliance + UX optimization
+
+### Changed
+
+- **SKILL.md SOP simplified** from 4 steps to 3 steps (merged generate + validate + deliver into one step). Reduced Agent execution overhead.
+- **Step 1 style setup**: replaced forced 4-question menu with **sensible defaults** (科技/AI, 扁平UI, 16:9, GPT Image 2). Full menu only shown when user explicitly asks for options. Follows Anthropic guideline: "give defaults, not excessive options."
+- **Step 2 decomposition**: replaced open-ended "ask yourself" prompt with a **template table** (Visual goal / Module / On-image text) + validation checkpoint. Lowers Agent freedom for error-prone step.
+- **Output reordered**: The Prompt now delivered first in a code block (what the user copies). Design notes (reasoning, decomposition, variants) moved after a `---` separator.
+- **frontmatter description** rewritten to comply with Anthropic spec: third person, ≤1024 chars, clear "what + when to use" structure.
+- **style-config.md** slimmed: resolution/canvas info moved to model-guide.md. style-config now focuses purely on aesthetics (domain mood + color palettes + rendering mediums).
+
+### Added
+
+- **REVIEW.md**: self-assessment scorecard, Anthropic compliance checklist, boundary declarations, and roadmap.
+- Anthropic Skills specification compliance verification (name format, description format, progressive disclosure, one-level-deep references, forward-slash paths).
+
+### Fixed (from v2.0.0 review)
+
+- Removed `ask_user` tool-specific reference (now platform-agnostic).
+- Eliminated content overlap between style-config.md and model-guide.md.
+
 ## v2.0.0 — 5-block structured prompts + model adaptation + module system
 
 ### Added

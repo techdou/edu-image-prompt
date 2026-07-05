@@ -31,23 +31,21 @@
 ```
 用户：把 RAG 讲给家长听，用生活类比
        ↓
-Skill 执行 4 步 SOP：
-  Step 1: 问询风格选择（领域/质感/平台/模型）
+Skill 执行 3 步 SOP：
+  Step 1: 风格设定（有默认值，不强制问询）
   Step 2: 知识点拆解为 3-4 个可绘制的视觉目标 ← 关键步骤
-  Step 3: 用 5-block 模板组装 prompt
-  Step 4: 质量验证 → 输出
+  Step 3: 生成 + 验证 + 输出（prompt 在最前面）
        ↓
 输出：可直接粘贴到 GPT Image 2 / Nano Banana 的 prompt
 ```
 
-## 4 步工作流
+## 3 步工作流
 
 | 步骤 | 做什么 | 为什么重要 |
 |------|--------|-----------|
-| **Step 1 问询** | 选择领域美学、渲染介质、展示平台、目标模型 | 确保风格匹配场景 |
-| **Step 2 拆解** | 把知识点分解为 3-4 个**可绘制**的视觉目标 | 防止直接跳到 prompt 的 #1 错误 |
-| **Step 3 生成** | 用 5-block 模板组装结构化 prompt | 确保布局/文本/约束完整 |
-| **Step 4 验证** | 运行质量检查清单 | 确保输出可直接使用 |
+| **Step 1 风格设定** | 有默认值（科技AI/扁平UI/16:9/GPT Image 2），用户可覆盖 | 不阻塞，快速出图 |
+| **Step 2 拆解** | 用模板表格把知识点分解为 3-4 个**可绘制**的视觉目标 | 防止直接跳到 prompt 的 #1 错误 |
+| **Step 3 生成+交付** | 用 5-block 模板组装 → 验证 → 输出（prompt 优先） | 确保输出可直接复制使用 |
 
 ## 支持的模型
 
@@ -76,6 +74,7 @@ Skill 执行 4 步 SOP：
 | [`references/output-format.md`](./references/output-format.md) | 输出格式规范 |
 | [`references/validation.md`](./references/validation.md) | 质量验证清单 |
 | [`references/troubleshooting.md`](./references/troubleshooting.md) | 6 种常见问题修复 |
+| [`REVIEW.md`](./REVIEW.md) | 质量自评 + Anthropic 合规清单 |
 | [`CHANGELOG.md`](./CHANGELOG.md) | 版本记录 |
 
 ## License

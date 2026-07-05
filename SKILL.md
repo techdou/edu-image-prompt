@@ -1,86 +1,120 @@
 ---
 name: edu-image-prompt
-description: Generate student-friendly educational image prompts from knowledge points for AI literacy lessons, PPT slides, public-account posts, handouts, livestream decks, and classroom knowledge cards. Use when the user asks to turn a concept, lesson point, outline, or teaching topic into a clean visual prompt, 图文卡片, 知识地图, 流程图, 课堂配图, 课程素材, 生图 Prompt, or 知识卡片. Outputs a structured 5-block prompt optimized for GPT Image 2, Nano Banana, and Midjourney with reliable Chinese text rendering.
+description: >-
+  Generates structured 5-block image-generation prompts for educational visuals
+  from any knowledge point. Produces copy-paste-ready prompts optimized for
+  GPT Image 2, Nano Banana, and Midjourney with reliable Chinese text
+  rendering. Use when the user wants to turn a concept, lesson, or topic into
+  a knowledge card (图文卡片), infographic (知识地图), process diagram (流程图),
+  classroom illustration (课堂配图), or social-media study card (知识卡片), or
+  asks for a 生图 Prompt / AI 配图 / 教学素材.
 ---
 
 # edu-image-prompt
 
-Turn any educational knowledge point into a professional, structured image-generation prompt. The output is a **copy-paste-ready prompt** that produces clean, readable educational visuals — not decorative posters.
+Turns any educational knowledge point into a **copy-paste-ready image-generation prompt** that produces clean, readable educational visuals — not decorative posters.
 
-## Use This Skill For
+## When to use
 
-- **Teaching Materials**: PPT slides, knowledge cards, process flows, lecture handouts.
-- **Concept Visualization**: Explaining abstract theories, technical terms, or complex systems.
-- **Social Media Education**: Xiaohongshu cards, public-account posts, livestream decks.
+- Turning a concept / lesson point / outline into a visual prompt
+- Creating PPT slides, knowledge cards, process diagrams, lecture handouts
+- Concept visualization for abstract theories or technical terms
+- Social-media education cards (Xiaohongshu, public-account posts)
 
-## Interactive Workflow (MANDATORY)
+## When NOT to use
 
-When the user triggers this skill, you MUST NOT generate the final prompt immediately. Execute this 4-step SOP:
+- User wants the image itself generated directly (not a prompt)
+- User wants a photo edit or image retouching
+- User wants a logo, brand asset, or marketing creative
 
-### Step 1: The Inquiry (问询式交互)
+## Workflow (3 steps)
 
-Present a multiple-choice menu. Use `ask_user` tool if available, or print the markdown menu and wait.
+### Step 1 — Style setup
 
-Ask the user to select:
+If the user already specified a style ("用黏土风", "做小红书卡片"), skip to Step 2.
 
-1. **领域美学 (Domain Style)**: [A] 科技/AI (玻璃态) | [B] 商学/管理 (黑金商务) | [C] 人文/历史 (复古杂志) | [D] 少儿/心理 (亲和黏土)
-2. **质感渲染 (Rendering Medium)**: [A] 等距 3D (Isometric) | [B] 扁平 UI (Flat UI) | [C] 场景实拍+AR面板 (Editorial Photo)
-3. **展示平台 (Platform Layout)**: [A] PPT/直播 (16:9) | [B] 朋友圈/小红书 (3:4) | [C] 通用讲义 (16:9)
-4. **目标模型 (Target Model)**: [A] GPT Image 2 (默认，中文渲染最佳) | [B] Nano Banana (快速批量) | [C] Midjourney v7 (艺术插画) | [D] 不指定
+Otherwise, use **sensible defaults** and proceed — do NOT block on a menu:
 
-### Step 2: Knowledge Decomposition (知识点拆解) — THE CRITICAL STEP
+| Parameter | Default | Full menu (only if user asks "有哪些选项") |
+|-----------|---------|---------------------------------------------|
+| 领域美学 | 科技/AI 玻璃态 | A)科技 B)商学黑金 C)人文复古 D)少儿黏土 |
+| 质感渲染 | 扁平 UI | A)等距3D B)扁平UI C)场景实拍+AR |
+| 展示平台 | 通用讲义 16:9 | A)PPT/直播 B)小红书3:4 C)通用16:9 |
+| 目标模型 | GPT Image 2 | A)GPT Image 2 B)Nano Banana C)Midjourney D)不指定 |
 
-Before writing any prompt, decompose the knowledge point into **3-4 drawable visual elements** (学习目标). This is the step most people skip, and the #1 reason AI educational images fail.
+> Rationale: most users just want a good card fast. Give them the default, let them override.
 
-Ask yourself: *What 3-4 things should a student be able to point to after seeing this image for 30 seconds?*
+### Step 2 — Knowledge decomposition (CRITICAL)
+
+Fill this template. Do NOT skip — this is the step that separates a useful educational image from a pretty-but-empty poster.
+
+**Decomposition table** (copy and fill):
+
+| # | Visual goal (must be drawable) | Module | On-image text (≤8 chars) |
+|---|-------------------------------|--------|--------------------------|
+| 1 | [具体可绘制元素, e.g. "一句话被拆成积木块"] | analogy / definition / ... | "≤8字" |
+| 2 | ... | ... | ... |
+| 3 | ... | ... | ... |
+| 4 | (optional) ... | ... | ... |
+
+**Module pool** (pick 5-8, see `type-guide.md` for details):
+`definition` · `example` · `steps` · `comparison` · `pitfall` · `analogy` · `gold-sentence` · `rating` · `flow-arrow` · `zoom-detail` · `warning` · `mnemonic`
+
+**Validation checkpoint** — before proceeding, verify:
+- [ ] Every goal is drawable (if any reads like "understand X", rewrite it more specifically)
+- [ ] 5-8 modules selected (fewer = empty, more = labels get dropped)
+- [ ] At least one `pitfall` or `warning` module (makes the image feel authored)
+- [ ] If the topic is abstract, an `analogy` module is included
+
+### Step 3 — Generate, validate, and deliver
+
+1. **Assemble** the 5-block prompt using the template in `prompt-rules.md`, applying the style from Step 1 and modules from Step 2.
+2. **Apply model-specific techniques** from `model-guide.md` (e.g., GPT Image 2 thinking mode, MJ `--ar` parameter).
+3. **Quick-check** against the validation rules below.
+4. **Deliver** following the output format (prompt first, design notes after).
+
+## The 5-block prompt structure
+
+Every prompt must follow this order (see `prompt-rules.md` for full template):
 
 ```
-示例 — "什么是 Token"
-✅ 好的学习目标（可绘制）：
-  1. 一句话被拆成多块积木（Token 化过程）
-  2. 每块积木有编号/标签（Token = 最小单位）
-  3. 积木数量有上限（上下文窗口限制）
-
-❌ 坏的学习目标（不可绘制）：
-  "学生理解 Token 的概念"
+[1] CANVAS       — dimensions, background, dominant accent color
+[2] HEADER       — exact title text wrapped in THE TEXT READS: "..."
+[3] CONTENT BLOCKS — 5-8 named modules with labels
+[4] VISUAL       — line weight, icon style, arrow style, palette
+[5] CONSTRAINTS  — text accuracy rules + negative keywords
 ```
 
-Then select **5-8 content modules** from the module pool in `type-guide.md`:
-`定义 → 例子 → 步骤 → 对比 → 误区 → 类比 → 金句 → 评分`
+**The #1 text-rendering rule**: wrap every Chinese string in `THE TEXT READS: "..."`. This is the biggest accuracy lever for CJK text (source: OpenAI cookbook, validated across 300+ generations).
 
-### Step 3: Prompt Generation (生成)
+## Output format
 
-Apply the user's style choices + the decomposed modules to the **5-block structured prompt template** (see `prompt-rules.md`):
+Deliver in this order (prompt first — that's what the user copies):
 
-```
-[1] CANVAS — 尺寸、背景、主色调
-[2] HEADER — 精确标题文本 + 定位句（引号包裹）
-[3] CONTENT BLOCKS — 5-8 个命名模块
-[4] VISUAL — 线条/图标/箭头/配色风格
-[5] CONSTRAINTS — "THE TEXT READS:..." + 禁止项
-```
+1. **📋 The Prompt** — the complete 5-block prompt in a code block, copy-paste ready
+2. **Design notes** (brief) — recommended type, decomposition summary, model hint, variants
 
-Apply model-specific techniques from `model-guide.md` (e.g., GPT Image 2 的 thinking 模式、Midjourney 的 --ar 参数).
+See `output-format.md` for the exact template.
 
-### Step 4: Quality Check (质量验证) → Output
+## Quick validation rules
 
-Before outputting, run the validation checklist in `validation.md`. Then deliver following the format in `output-format.md`.
+Before delivering, verify:
+- Prompt follows 5-block order (CANVAS first)
+- Every CJK label wrapped in `THE TEXT READS: "..."`
+- Total on-image Chinese text ≤ 60 characters
+- Font hierarchy specified (≥ 3 tiers)
+- Negative constraints included (no garbled text, no Lorem ipsum, no watermarks)
+- If target is Midjourney: no Chinese text on image
 
-## The Golden Rules
+Full checklist: `validation.md`. Pitfall fixes: `troubleshooting.md`.
 
-- **Analogy First**: For abstract concepts, always anchor to a tactile life analogy before the technical framing.
-- **Text Must Render**: Every Chinese string on the image must be wrapped in `THE TEXT READS: "..."` — this is the #1 accuracy lever for CJK text rendering.
-- **Structure Before Style**: Describe canvas/layout/blocks BEFORE visual style. Starting with "beautiful, vibrant..." makes the AI fill gaps randomly.
-- **5-8 Modules Max**: Below 5 looks empty; above 8 starts losing labels even on GPT Image 2.
-- **Pure Output**: The final prompt must be copy-pasteable without extra formatting labels.
+## References (one level deep — read when needed)
 
-## References (Read When Needed)
-
-- **5-block prompt template & text rendering**: [prompt-rules.md](references/prompt-rules.md)
-- **Model-specific guide (GPT Image 2 / Nano Banana / MJ)**: [model-guide.md](references/model-guide.md)
-- **Visual types & module pool**: [type-guide.md](references/type-guide.md)
-- **Style parameters**: [style-config.md](references/style-config.md)
-- **Example outputs**: [examples.md](references/examples.md)
-- **Output format**: [output-format.md](references/output-format.md)
-- **Validation checklist**: [validation.md](references/validation.md)
-- **Troubleshooting (pitfalls & fixes)**: [troubleshooting.md](references/troubleshooting.md)
+- [prompt-rules.md](references/prompt-rules.md) — 5-block template + text rendering rules
+- [model-guide.md](references/model-guide.md) — GPT Image 2 / Nano Banana / MJ v7 adaptation
+- [type-guide.md](references/type-guide.md) — 8 preset types + 12-module pool
+- [style-config.md](references/style-config.md) — domain aesthetics + color palettes
+- [examples.md](references/examples.md) — 3 complete worked examples
+- [output-format.md](references/output-format.md) — output structure template
+- [validation.md](references/validation.md) — full quality checklist
+- [troubleshooting.md](references/troubleshooting.md) — 6 common pitfalls and fixes

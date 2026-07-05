@@ -1,29 +1,20 @@
 # Example Outputs
 
-Three full examples showing the complete workflow: decomposition → 5-block prompt assembly → output.
+Three full examples showing the complete workflow. Each follows the output format: **prompt first, design notes after**.
+
+---
 
 ## Example 1: Analogy — "什么是 Token"
 
 **User input**: 把 Token 讲给家长听，用生活类比
 
-**Step 2 decomposition**:
-- Learning goals: ①文字被拆成积木块 ②每块有编号 ③积木数量有限
-- Modules: `analogy`(积木) → `definition`(最小单位) → `pitfall`(≠按词拆) → `gold-sentence`
-- Type: `analogy`
-- Style: [D] 少儿/心理亲和黏土风 | [B] 扁平UI | [C] 通用讲义 16:9
-
-**Step 4 output**:
-
 ### Token：AI 的积木 | Analogy
-- **推荐理由**: 抽象概念用触觉类比最直观——家长能秒懂"拆字"这个过程。
-- **图文文案**:
-  - 主标题：Token：AI 的积木
-  - 副标题：理解 AI 如何"阅读"文字
-  - 重点项：整句拆成积木 / 每块都要算 / 数量有上限
-  - 金句：像搭积木一样理解 AI
-- **The Prompt**:
 
-```
+#### 📋 The Prompt
+
+> Target model: GPT Image 2 | Quality: high
+
+```text
 Create a horizontal 1536×1024 educational knowledge card.
 
 CANVAS: clean pearl-white background (#F8F9FA), soft pastel blue primary (#7DB3D9), warm coral secondary accent. Generous whitespace, soft clay-texture feel.
@@ -42,6 +33,14 @@ VISUAL: soft claymorphism illustration, rounded edges, macaron color palette, fr
 CONSTRAINTS: every visible text string is rendered verbatim — THE TEXT READS exactly as specified above. No garbled text, no misspelled characters, no Lorem ipsum, no placeholder text. No dense small text, no complex backgrounds, no cyberpunk, no neon glow. No watermarks, no platform logos. The image looks like a published educational handout, not a marketing poster. High-fidelity Chinese typography, crisp text rendering.
 ```
 
+---
+
+#### Design notes
+
+- **推荐理由**: 抽象概念用触觉类比最直观——家长能秒懂"拆字"过程。
+- **知识点拆解**:
+  - 学习目标: ①文字被拆成积木块 ②每块有编号 ③积木数量有限
+  - 模块选择: `analogy` → `definition` → `example` → `pitfall` → `gold-sentence`
 - **变体**: (1) 去文字纯积木图 (2) 纯白背景版 (3) 等距3D版
 
 ---
@@ -50,24 +49,13 @@ CONSTRAINTS: every visible text string is rendered verbatim — THE TEXT READS e
 
 **User input**: 做一张 Vibe Coding 从想法到交付的流程图
 
-**Step 2 decomposition**:
-- Learning goals: ①从模糊想法开始 ②经过Plan/生成/Review ③最终交付
-- Modules: `steps`(7步流程) → `flow-arrow` → `gold-sentence`
-- Type: `process-flow`
-- Style: [A] 科技/AI | [A] 等距3D | [A] PPT/直播 16:9
-
-**Step 4 output**:
-
 ### Vibe Coding 流程 | Process Flow
-- **推荐理由**: 工作流需要清晰的步骤序列来展示进展，箭头连接让人秒懂顺序。
-- **图文文案**:
-  - 主标题：Vibe Coding 流程
-  - 副标题：从想法到交付的极简路径
-  - 重点项：明确目标 / Plan与生成 / Review与沉淀
-  - 金句：把想法变成交付
-- **The Prompt**:
 
-```
+#### 📋 The Prompt
+
+> Target model: GPT Image 2 | Quality: medium | thinking: medium
+
+```text
 Create a horizontal 1536×1024 educational process-flow diagram.
 
 CANVAS: clean white background (#FFFFFF), tech-blue primary (#2563EB), soft green secondary accent (#10B981). Modern glassmorphism feel with subtle transparency.
@@ -89,7 +77,15 @@ VISUAL: isometric 3D step cards, glassmorphism panels, thin teal connector arrow
 CONSTRAINTS: every visible text string is rendered verbatim — THE TEXT READS exactly as specified. No garbled text, no misspelled characters, no Lorem ipsum. No dense small text, no complex backgrounds, no cyberpunk. No watermarks. High-fidelity Chinese typography.
 ```
 
-- **变体**: (1) 压缩为4步简化版 (2) 竖版流程 (3) 圆形循环版
+---
+
+#### Design notes
+
+- **推荐理由**: 工作流需要清晰步骤序列，箭头连接让人秒懂顺序。
+- **知识点拆解**:
+  - 学习目标: ①从模糊想法开始 ②经过 Plan/生成/Review ③最终交付
+  - 模块选择: `steps`(7步) → `flow-arrow` → `gold-sentence`
+- **变体**: (1) 压缩为 4 步简化版 (2) 竖版流程 (3) 圆形循环版
 
 ---
 
@@ -97,24 +93,13 @@ CONSTRAINTS: every visible text string is rendered verbatim — THE TEXT READS e
 
 **User input**: AI Agent 是由什么组成的？做一张知识地图
 
-**Step 2 decomposition**:
-- Learning goals: ①Agent有多个组成部分 ②每个部分有不同职责 ③协同工作
-- Modules: center node + 6 branches (`definition` + `analogy` per branch)
-- Type: `knowledge-map`
-- Style: [A] 科技/AI | [B] 扁平UI | [C] 通用讲义 16:9
-
-**Step 4 output**:
-
 ### Agent：全能助手 | Knowledge Map
-- **推荐理由**: 复杂系统用整体地图最直观——一眼看到所有组件及其关系。
-- **图文文案**:
-  - 主标题：Agent 不只是模型
-  - 副标题：大脑 + 规划 + 工具 + 记忆
-  - 重点项：LLM 大脑 / 规划流程 / 工具箱 / 上下文记忆
-  - 金句：从想到做的跨越
-- **The Prompt**:
 
-```
+#### 📋 The Prompt
+
+> Target model: GPT Image 2 | Quality: high
+
+```text
 Create a horizontal 1536×1024 educational knowledge map.
 
 CANVAS: clean light gray background (#F8F9FA), navy primary (#1E3A5F), with individual module accent colors (blue, green, orange, purple, teal, gold).
@@ -136,4 +121,12 @@ VISUAL: flat UI knowledge map, thin connector lines (1pt navy), each branch is a
 CONSTRAINTS: every visible text rendered verbatim — THE TEXT READS exactly as specified. No garbled text, no misspelled characters, no Lorem ipsum. No messy lines, no sci-fi aesthetic, no cyberpunk. No watermarks. High-fidelity Chinese typography, crisp text rendering.
 ```
 
-- **变体**: (1) 减少到4分支简化版 (2) 放射状3D版 (3) 左右树状结构版
+---
+
+#### Design notes
+
+- **推荐理由**: 复杂系统用整体地图最直观——一眼看到所有组件及关系。
+- **知识点拆解**:
+  - 学习目标: ①Agent 有多个组成部分 ②每个部分有不同职责 ③协同工作
+  - 模块选择: center `definition` + 6 × `example` branches + `gold-sentence`
+- **变体**: (1) 减少到 4 分支简化版 (2) 放射状 3D 版 (3) 左右树状结构版

@@ -1,27 +1,49 @@
-# Advanced Style Configuration
+# Style Configuration — Domain Aesthetics & Color
 
-This document defines the advanced visual parameters that can be applied to `edu-image-prompt` generations.
+Defines the visual mood and color palette for each domain. Resolution and canvas dimensions live in `model-guide.md`.
 
-## 1. Dynamic Domain Aesthetics (领域美学)
-Adapt the underlying mood based on the subject matter:
-- **Tech / AI Literacy (科技/AI)**: Glassmorphism, 3D elements, clean digital vibe, neon blue/green accents (used sparingly).
-- **Business / Management (企业管理/商学)**: Corporate Minimalist. Dark mode options, high contrast, sharp geometric cuts, gold/navy blue accents.
-- **Humanities / History (人文/历史)**: Museum Editorial. Beige paper texture backgrounds, serif typography metaphors, retro/muted color tones.
-- **Kids / Psychology (少儿/心理学)**: Playful Claymorphism or Soft Pastel Vector. Rounded edges, macaron colors, high-affinity scenes.
+## Domain Aesthetics (领域美学)
 
-## 2. Palette Engineering (精准调色板)
-Enforce strict color palettes to prevent chaotic colors:
-- **Default EdTech**: "Background: #F8F9FA (Pearl White), Primary: Low-saturation theme color, Secondary: Complementary warm tone. Strictly no high-saturation multi-color gradients."
-- **Corporate Dark**: "Background: #121212 (Deep Navy/Black), Primary: Champagne Gold, Secondary: Silver gray."
+| Domain | Chinese | Visual mood | Accent colors |
+|--------|---------|-------------|---------------|
+| Tech / AI | 科技/AI | Glassmorphism, 3D elements, clean digital vibe | Neon blue/green (used sparingly) |
+| Business / Management | 商学/管理 | Corporate minimalist, dark mode, high contrast, sharp geometry | Gold / navy blue |
+| Humanities / History | 人文/历史 | Museum editorial, beige paper texture, serif typography metaphors | Retro / muted tones |
+| Kids / Psychology | 少儿/心理 | Claymorphism or soft pastel vector, rounded edges, high-affinity | Macaron colors |
 
-## 3. Rendering Mediums (质感渲染)
-Control the artistic 3D/2D style:
-- **Isometric 3D (等距视角)**: Best for process flows and knowledge maps. Looks like structural building blocks from a god's-eye view.
-- **Flat UI/UX Design (扁平界面风)**: Best for cards and comparisons. Looks like a clean iOS interface screenshot.
-- **Editorial Photography (杂志摄影风)**: Best for covers and quotes. Blends real-world scenes (e.g., a real desk) with floating AR data panels.
+## Color Palettes (精准调色板)
 
-## 4. Platform-Aware Layouts (多平台构图)
-Control composition based on where the image will be shown:
-- **PPT / Livestream (16:9)**: Enforce "Right/Left area reserved for speaker video overlay" (大量留白防讲师人像遮挡).
-- **Social Media / Xiaohongshu (3:4)**: "Magazine cover layout, text centered, high visual impact, crop-safe margins."
-- **Standard Handout (16:9 or 4:3)**: Centered or balanced, max readability.
+Enforce strict palettes to prevent chaotic colors. Pick one per card.
+
+### Default EdTech (light)
+- Background: `#F8F9FA` (Pearl White)
+- Primary: Low-saturation theme color (blue/teal)
+- Secondary: Complementary warm tone (orange/coral)
+- Rule: no high-saturation multi-color gradients
+
+### Corporate Dark
+- Background: `#121212` (Deep Navy/Black)
+- Primary: Champagne Gold `#D4AF37`
+- Secondary: Silver gray `#C0C0C0`
+
+### Warm Social (Xiaohongshu)
+- Background: `#FFF8EE` (Warm cream)
+- Primary: Muted terracotta `#C96E5A`
+- Secondary: Soft pink accent
+
+### Clean Academic (handout)
+- Background: `#FFFFFF` (Pure white) or graph-paper texture
+- Primary: Navy `#1E3A5F`
+- Secondary: Accent yellow for highlights, red for warnings only
+
+## Rendering Mediums (质感渲染)
+
+Controls the artistic 3D/2D style. Choose one:
+
+| Medium | Chinese | Best for | Looks like |
+|--------|---------|----------|------------|
+| Isometric 3D | 等距视角 | Process flows, knowledge maps | Structural building blocks, god's-eye view |
+| Flat UI/UX | 扁平界面风 | Cards, comparisons, definitions | Clean iOS interface screenshot |
+| Editorial Photo | 杂志摄影风 | Covers, quotes, scene stories | Real-world scene + floating AR data panels |
+
+> Resolution and aspect ratio for each platform (PPT/social/handout) are defined in `model-guide.md` under the model-specific sections.

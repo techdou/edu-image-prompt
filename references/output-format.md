@@ -1,42 +1,43 @@
 # Output Format
 
-For each knowledge point, output the following structure after completing the 4-step SOP.
+Deliver in this order. **The Prompt comes first** — that's what the user copies. Design notes come after, for users who want to understand the reasoning.
 
-## Standard Output Structure
+## Template
 
 ### [Point Title] | [Visual Type]
 
-- **推荐理由**: Why this visual type / module combination works for this specific point.
+#### 📋 The Prompt
 
-- **知识点拆解** (Step 2 output):
-  - 学习目标: ①[drawable goal 1] ②[drawable goal 2] ③[drawable goal 3]
+> Target model: [GPT Image 2 / Nano Banana / MJ v7] | Quality: [low/medium/high]
+
+```text
+[Complete 5-block prompt, copy-paste ready. No markdown formatting inside.
+ User should be able to select this block and paste directly into the image generator.]
+```
+
+---
+
+#### Design notes
+
+- **推荐理由**: [1-2 sentences on why this type/module combo fits this topic]
+- **知识点拆解**:
+  - 学习目标: ①[drawable goal] ②[drawable goal] ③[drawable goal]
   - 模块选择: [module1] → [module2] → ... (5-8 modules)
+- **图文文案** (on-image copy budget):
+  - 主标题：[≤ 12 chars]
+  - 副标题：[≤ 24 chars]
+  - 重点项：[point 1] / [point 2] / ... (each ≤ 8 chars)
+  - 金句：[≤ 16 chars]
+- **变体** (variants):
+  - (1) [Text-reduced version — focus on visual metaphor]
+  - (2) [Pure background — no text, for manual editing]
+  - (3) [Alternative layout — different type or arrangement]
 
-- **图文文案** (On-Image Copy):
-  - 主标题：[Main Title, ≤ 12 Chinese chars]
-  - 副标题：[Short Explanation, ≤ 24 Chinese chars]
-  - 重点项：[Point 1] / [Point 2] / ... (each ≤ 8 chars)
-  - 金句：[Memory Line, ≤ 16 chars]
+## Formatting rules
 
-- **The Prompt**: The complete 5-block structured prompt, copy-paste ready. Must include:
-  - [1] CANVAS with exact dimensions and colors
-  - [2] HEADER with `THE TEXT READS: "..."` for every label
-  - [3] CONTENT BLOCKS (5-8 named modules)
-  - [4] VISUAL style specification
-  - [5] CONSTRAINTS with text accuracy and negative rules
-
-- **变体** (Variants):
-  - (1) Text-reduced version (focus on visual metaphor, minimal labels)
-  - (2) Pure background version (no text, for manual editing in Canva/Figma)
-  - (3) Alternative layout version (different type or module arrangement)
-
-## Formatting Rules
-
-1. **The Prompt section must be pure** — no markdown formatting inside, no extra labels. The user should be able to select and copy-paste it directly into the image generator.
-2. **Use a code block** (```) for The Prompt to make copying easy.
-3. **Bilingual title** when possible: Chinese title + English gloss helps GPT Image 2 treat the topic as serious/educational.
-4. **Model hint**: If the user selected a target model in Step 1, note it above The Prompt:
-   ```
-   > Target model: GPT Image 2 | Recommended quality: high | thinking: medium
-   ```
-5. **Card number** for series: If this is part of a multi-card set, add `卡片 N/M` at the top.
+1. **The Prompt is always in a code block** — triple backticks, no language tag (so it copies clean).
+2. **The Prompt must be pure** — no inline labels, no commentary. Just the prompt text.
+3. **Design notes are separated by `---`** — so the user knows where the copyable part ends.
+4. **Model hint** goes above the code block, in a blockquote.
+5. **Bilingual title** when possible — Chinese title + English gloss helps GPT Image 2 treat the topic seriously.
+6. **Card number** for series — if part of a multi-card set, prefix the title with `卡片 N/M`.
