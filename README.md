@@ -1,3 +1,25 @@
+# Edu Image Prompt 🎨 | 教育配图 Prompt
+
+[English](#english) | [中文](#中文)
+
+---
+
+<a id="english"></a>
+## English
+
+An Agent Skill that turns any knowledge point into a **ready-to-paste AI image generation prompt** — optimized for education scenarios with reliable Chinese text rendering.
+
+### When to use
+
+- Generate illustration prompts for lecture notes, slides, course materials
+- Visualize abstract concepts as images
+- Education-scene prompts that render Chinese reliably
+
+---
+
+<a id="中文"></a>
+## 中文
+
 # Edu Image Prompt 🎨
 
 > 把任何知识点变成**可直接粘贴使用的 AI 生图 Prompt** — 专为教育场景优化，中文渲染可靠。
